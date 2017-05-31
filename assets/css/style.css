@@ -11,6 +11,13 @@
 	background-color: #ADD8E6
 }
 
+.col-md-4{
+    text-align: center;
+    border-style: inset;
+}
+
+
+
 .footer{
     position: relative;
     bottom: 0;

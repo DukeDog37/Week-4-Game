@@ -17,3 +17,8 @@ function SetCrystalValues(){
 	return intCrystalValue;
 }
 
+function SetWinLossTotal(Wins, Losses){
+	document.getElementById("Wins").innerHTML = Wins;
+	document.getElementById("Losses").innerHTML = Losses;
+}
+

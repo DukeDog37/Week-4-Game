@@ -33,14 +33,17 @@
 			  </div>
 		 	  <div class="row">
 				<div class = "col-md-4">
+					<p style="font-size: 36px;"">Target Score</p>
 					<span id="TargetNum" style="font-size: 36px;">0</span>
 				</div>
 				<div class = "col-md-4">
-					<!-- <button class="button" onclick="SetTargetNum()">Start Game</button> -->
-				</div>
-				<div class = "col-md-4">
+					
 					<h2>Wins: <span id="Wins">0</span></h2>
 		  			<h2>Losses: <span id="Losses">0</span></h2>
+				</div>
+				<div class = "col-md-4">
+					<p style="font-size: 36px;"">Current Score</p>
+					<span id="RunTotal" style="font-size: 36px;">0</span>
 				</div>
 		 	  </div>
 			  <div class="row">
@@ -101,18 +104,25 @@
 			//if red
 			if(strCrystal == "Red"){
 				intRunTotal = intRunTotal + intRedValue;
+				document.getElementById("RunTotal").innerHTML = intRunTotal;
 			}
 			//if blue
 			if(strCrystal == "Blue"){
 				intRunTotal = intRunTotal + intBlueValue;
+				document.getElementById("RunTotal").innerHTML = intRunTotal;
+			
 			}
 			//if green
 			if(strCrystal == "Green"){
 				intRunTotal = intRunTotal + intGreenValue;
+				document.getElementById("RunTotal").innerHTML = intRunTotal;
+			
 			}
 			//if light blue
 			if(strCrystal == "LBlue"){
 				intRunTotal = intRunTotal + intLBlueValue;
+				document.getElementById("RunTotal").innerHTML = intRunTotal;
+			
 			}
 			console.log("Running Total : " + intRunTotal);
 
@@ -121,17 +131,39 @@
 			}
 			else if(intRunTotal == intTargetNum){
 				//Player Wins
-				intWins = intWins++;
-				document.getElementById("Wins").innerHTML = intWins;
+				intWins = intWins + 1;
+				SetWinLossTotal(intWins, intLosses);
 				alert("You Win");
-
+				intRunTotal = 0;
+				document.getElementById("RunTotal").innerHTML = intRunTotal;
+				intTargetNum = GetRandomNum(19, 120);
+				document.getElementById("TargetNum").innerHTML = intTargetNum;
+				intRedValue = GetRandomNum(1, 12);
+				document.getElementById("Red").innerHTML = intRedValue;
+				intBlueValue = GetRandomNum(1, 12);
+				document.getElementById("Blue").innerHTML = intBlueValue;
+				intGreenValue = GetRandomNum(1, 12);
+				document.getElementById("Green").innerHTML = intGreenValue;
+				intLBlueValue = GetRandomNum(1, 12);
+				document.getElementById("LBlue").innerHTML = intLBlueValue;
 			}
 			else if(intRunTotal > intTargetNum){
 				//Player Loses - alert them
-				intLosses = intLosses++;
-				document.getElementById("Losses").innerHTML = intLosses;
+				intLosses = intLosses + 1;
+				SetWinLossTotal(intWins, intLosses);
 				alert("You Lose, better luck next time.");
-
+				intRunTotal = 0;
+				document.getElementById("RunTotal").innerHTML = intRunTotal;
+				intTargetNum = GetRandomNum(19, 120);
+				document.getElementById("TargetNum").innerHTML = intTargetNum;
+				intRedValue = GetRandomNum(1, 12);
+				document.getElementById("Red").innerHTML = intRedValue;
+				intBlueValue = GetRandomNum(1, 12);
+				document.getElementById("Blue").innerHTML = intBlueValue;
+				intGreenValue = GetRandomNum(1, 12);
+				document.getElementById("Green").innerHTML = intGreenValue;
+				intLBlueValue = GetRandomNum(1, 12);
+				document.getElementById("LBlue").innerHTML = intLBlueValue;
 			}
 
 
