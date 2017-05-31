@@ -2,24 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Homework 4 - Jason Henry - Crystal Game</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Homework 4 - Jason Henry - Crystal Game</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	  <!-- Bootstrap CDN -->
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	  <!-- Custom CSS for overrides as needed -->
-	  <link rel="stylesheet" href="assets/css/style.css">
+	  	<link rel="stylesheet" href="assets/css/style.css">
 	  <!-- Javascript file contianing main functions -->
-	  <script src="assets/javascript/game.js"></script>
-
-
-
+	  	<script src="assets/javascript/game.js"></script>
 
 </head>
 <body>
-	<script type="text/javascript">
 
-	</script>
 <!-- This is the html document element section -->
 	<div class="container">
 			  <div class="jumbotron">
@@ -41,7 +36,7 @@
 					<span id="TargetNum" style="font-size: 36px;">0</span>
 				</div>
 				<div class = "col-md-4">
-
+					<!-- <button class="button" onclick="SetTargetNum()">Start Game</button> -->
 				</div>
 				<div class = "col-md-4">
 					<h2>Wins: <span id="Wins">0</span></h2>
@@ -51,16 +46,20 @@
 			  <div class="row">
 				<div class = "col-md-3">
 					
-					<a><img id = "imgRed" class = "Crystals" src="assets/images/Red.jpg"></a>
+					<a><img id = "imgRed" class = "Crystals" onclick="fnNewScore('Red')" src="assets/images/Red.jpg"></a>
+					<p id="Red"></p>
 				</div>
 				<div class = "col-md-3">
-					<a><img id = "imgBlue" class = "Crystals" src="assets/images/Blue.jpg"></a>
+					<a><img id = "imgBlue" class = "Crystals" onclick="fnNewScore('Blue')" src="assets/images/Blue.jpg"></a>
+					<p id="Blue"></p>
 				</div>
 				<div class = "col-md-3">
-					<a><img id = "imgGreen" class = "Crystals" src="assets/images/Green.jpg"></a>
+					<a><img id = "imgGreen" class = "Crystals" onclick="fnNewScore('Green')" src="assets/images/Green.jpg"></a>
+					<p id="Green"></p>
 				</div>
 				<div class = "col-md-3">
-					<a><img id = "imgLBlue" class = "Crystals" src="assets/images/LightBlue.jpg"></a>
+					<a><img id = "imgLBlue" class = "Crystals" onclick="fnNewScore('LBlue')" src="assets/images/LightBlue.jpg"></a>
+					<p id="LBlue"></p>
 				</div>
 		 	  </div>
 		 		
@@ -68,12 +67,79 @@
 	<!-- Footer object - should persist at the bottom of the page -->  	
 			<footer class="footer">
 			     <div class="container">
-			                <span>Jason Henry - H3 - Psychic Game</span>
+			                <span>Jason Henry - H4 - Crystal Collector Game</span>
 			     </div>
 			</footer>	
 
 	</div>
+	<!-- All script code below the html element definitions -->
+	<script type="text/javascript">
+		//Set Game values
+		var intTargetNum = 0;
+		var intLosses = 0;
+		var intWins = 0;
+		var intRedValue = 0;
+		var intBlueValue = 0;
+		var intGreenValue = 0;
+		var intLBlueValue = 0;
+		var intRunTotal = 0; //Running total based on value of user seleted crystals
 
+		intTargetNum = GetRandomNum(19, 120);
+		document.getElementById("TargetNum").innerHTML = intTargetNum;
+
+		intRedValue = GetRandomNum(1, 12);
+		document.getElementById("Red").innerHTML = intRedValue;
+		intBlueValue = GetRandomNum(1, 12);
+		document.getElementById("Blue").innerHTML = intBlueValue;
+		intGreenValue = GetRandomNum(1, 12);
+		document.getElementById("Green").innerHTML = intGreenValue;
+		intLBlueValue = GetRandomNum(1, 12);
+		document.getElementById("LBlue").innerHTML = intLBlueValue;
+
+		function fnNewScore(strCrystal){
+			
+			//if red
+			if(strCrystal == "Red"){
+				intRunTotal = intRunTotal + intRedValue;
+			}
+			//if blue
+			if(strCrystal == "Blue"){
+				intRunTotal = intRunTotal + intBlueValue;
+			}
+			//if green
+			if(strCrystal == "Green"){
+				intRunTotal = intRunTotal + intGreenValue;
+			}
+			//if light blue
+			if(strCrystal == "LBlue"){
+				intRunTotal = intRunTotal + intLBlueValue;
+			}
+			console.log("Running Total : " + intRunTotal);
+
+			if(intRunTotal < intTargetNum){
+				//keep going
+			}
+			else if(intRunTotal == intTargetNum){
+				//Player Wins
+				intWins = intWins++;
+				document.getElementById("Wins").innerHTML = intWins;
+				alert("You Win");
+
+			}
+			else if(intRunTotal > intTargetNum){
+				//Player Loses - alert them
+				intLosses = intLosses++;
+				document.getElementById("Losses").innerHTML = intLosses;
+				alert("You Lose, better luck next time.");
+
+			}
+
+
+		};
+
+
+
+	</script>
 
 </body>
 </html>
