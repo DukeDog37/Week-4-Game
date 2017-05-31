@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
 		<title>Homework 4 - Jason Henry - Crystal Game</title>
@@ -19,7 +18,6 @@
 	<div class="container">
 			  <div class="jumbotron">
 			    <h1>Crystal Collector</h1> 
-			    <!-- <img src="assets/images/images.jpg"> --> 
 			    <p>You will be given a random number at the start of the game.</p>
 			    <p>There are 4 crystals below.  By clicking on a crystal you will add
 			    a specific amount of points to your total score.</p>
@@ -65,15 +63,12 @@
 					<p id="LBlue"></p>
 				</div>
 		 	  </div>
-		 		
-				
+	</div>
+	<div class = "container">
 	<!-- Footer object - should persist at the bottom of the page -->  	
-			<footer class="footer">
-			     <div class="container">
-			                <span>Jason Henry - H4 - Crystal Collector Game</span>
-			     </div>
-			</footer>	
-
+		<footer class="footer">
+		     <span>Jason Henry - H4 - Crystal Collector Game</span>
+		</footer>	
 	</div>
 	<!-- All script code below the html element definitions -->
 	<script type="text/javascript">
@@ -91,13 +86,13 @@
 		document.getElementById("TargetNum").innerHTML = intTargetNum;
 
 		intRedValue = GetRandomNum(1, 12);
-		document.getElementById("Red").innerHTML = intRedValue;
+		//document.getElementById("Red").innerHTML = intRedValue;
 		intBlueValue = GetRandomNum(1, 12);
-		document.getElementById("Blue").innerHTML = intBlueValue;
+		//document.getElementById("Blue").innerHTML = intBlueValue;
 		intGreenValue = GetRandomNum(1, 12);
-		document.getElementById("Green").innerHTML = intGreenValue;
+		//document.getElementById("Green").innerHTML = intGreenValue;
 		intLBlueValue = GetRandomNum(1, 12);
-		document.getElementById("LBlue").innerHTML = intLBlueValue;
+		//document.getElementById("LBlue").innerHTML = intLBlueValue;
 
 		function fnNewScore(strCrystal){
 			
@@ -139,13 +134,13 @@
 				intTargetNum = GetRandomNum(19, 120);
 				document.getElementById("TargetNum").innerHTML = intTargetNum;
 				intRedValue = GetRandomNum(1, 12);
-				document.getElementById("Red").innerHTML = intRedValue;
+				//document.getElementById("Red").innerHTML = intRedValue;
 				intBlueValue = GetRandomNum(1, 12);
-				document.getElementById("Blue").innerHTML = intBlueValue;
+				//document.getElementById("Blue").innerHTML = intBlueValue;
 				intGreenValue = GetRandomNum(1, 12);
-				document.getElementById("Green").innerHTML = intGreenValue;
+				//document.getElementById("Green").innerHTML = intGreenValue;
 				intLBlueValue = GetRandomNum(1, 12);
-				document.getElementById("LBlue").innerHTML = intLBlueValue;
+				//document.getElementById("LBlue").innerHTML = intLBlueValue;
 			}
 			else if(intRunTotal > intTargetNum){
 				//Player Loses - alert them
@@ -157,13 +152,13 @@
 				intTargetNum = GetRandomNum(19, 120);
 				document.getElementById("TargetNum").innerHTML = intTargetNum;
 				intRedValue = GetRandomNum(1, 12);
-				document.getElementById("Red").innerHTML = intRedValue;
+				//document.getElementById("Red").innerHTML = intRedValue;
 				intBlueValue = GetRandomNum(1, 12);
-				document.getElementById("Blue").innerHTML = intBlueValue;
+				//document.getElementById("Blue").innerHTML = intBlueValue;
 				intGreenValue = GetRandomNum(1, 12);
-				document.getElementById("Green").innerHTML = intGreenValue;
+				//document.getElementById("Green").innerHTML = intGreenValue;
 				intLBlueValue = GetRandomNum(1, 12);
-				document.getElementById("LBlue").innerHTML = intLBlueValue;
+				//document.getElementById("LBlue").innerHTML = intLBlueValue;
 			}
 
 
