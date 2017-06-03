@@ -12,10 +12,10 @@ function SetTargetNum(){
 }
 
 //At start of game this function will set the random values for each crystal type
-function SetCrystalValues(){
-	var intCrystalValue = GetRandomNum(1,12);
-	return intCrystalValue;
-}
+// function SetCrystalValues(){
+// 	var intCrystalValue = GetRandomNum(1,12);
+// 	return intCrystalValue;
+// }
 
 function SetWinLossTotal(Wins, Losses){
 	document.getElementById("Wins").innerHTML = Wins;

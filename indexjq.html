@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Homework 4 - Jason Henry - Crystal Game</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <!-- Bootstrap CDN -->
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	  <!-- Custom CSS for overrides as needed -->
+	  	<link rel="stylesheet" href="assets/css/style.css">
+	  <!-- Javascript file contianing main functions -->
+	  	<script src="assets/javascript/game.js"></script>
+	  	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+</head>
+<body>
+
+<!-- This is the html document element section -->
+	<div class="container">
+			  <div class="jumbotron">
+			    <h1>Crystal Collector JQuery</h1> 
+			    <p>You will be given a random number at the start of the game.</p>
+			    <p>There are 4 crystals below.  By clicking on a crystal you will add
+			    a specific amount of points to your total score.</p>
+				<p>You win the game by matching your total score to the randomly generated
+				 score.  You lose the game if your score goes above the randomly generated 
+				 score.</p>
+				<p>The value of each crystal is hidden from you until you click it.</p>
+				<p>Each time the game starts the values of the crystals will change.</p>
+				
+
+			  </div>
+		 	  <div class="row">
+				<div class = "col-md-3" id = "clsFeedback">
+					<p style="font-size: 36px;"">Target Score</p>
+					<span id="TargetNum" style="font-size: 36px;">0</span>
+				</div>
+				<div class = "col-md-3" id = "clsFeedback">
+					
+					<h2>Wins: <span id="Wins">0</span></h2>
+		  			<h2>Losses: <span id="Losses">0</span></h2>
+				</div>
+				<div class = "col-md-3" id = "clsFeedback">
+					<p style="font-size: 36px;"">Current Score</p>
+					<span id="RunTotal" style="font-size: 36px;">0</span>
+				</div>
+				<div class = "col-md-3" id = "clsFeedback">
+					<a href="index.html" class="btn btn-info" role="button">Run with JavaScript</a>
+					
+				</div>
+		 	  </div>
+			  <div class="row">
+				
+				<div class = "col-md-3">
+					<a><img id = "imgBlue" class = "Crystals" src="assets/images/Blue.jpg"></a>
+					<p id="Blue"></p>
+				</div>
+				<div class = "col-md-3">
+					
+					<a><img id = "imgRed" class = "Crystals" src="assets/images/Red.jpg"></a>
+					<p id="Red"></p>
+				</div>
+				
+				<div class = "col-md-3">
+					<a><img id = "imgLBlue" class = "Crystals" src="assets/images/LightBlue.jpg"></a>
+					<p id="LBlue"></p>
+				</div>
+				<div class = "col-md-3">
+					<a><img id = "imgGreen" class = "Crystals" src="assets/images/Green.jpg"></a>
+					<p id="Green"></p>
+				</div>
+		 	  </div>
+	</div>
+	<div class = "container">
+	<!-- Footer object - should persist at the bottom of the page -->  	
+		<footer class="footer">
+		     <span>Jason Henry - H4 - Crystal Collector Game</span>
+		</footer>	
+	</div>
+	<!-- All script code below the html element definitions -->
+	<script type="text/javascript">
+			$(document).ready(function(){
+				//Set Game values
+				var intTargetNum = 0;
+				var intLosses = 0;
+				var intWins = 0;
+				var intRedValue = 0;
+				var intBlueValue = 0;
+				var intGreenValue = 0;
+				var intLBlueValue = 0;
+				var intRunTotal = 0; //Running total based on value of user seleted crystals
+
+				intTargetNum = GetRandomNum(19, 120);
+				$("#TargetNum").text(intTargetNum);
+				
+				intRedValue = GetRandomNum(1, 12);
+				intBlueValue = GetRandomNum(1, 12);
+				intGreenValue = GetRandomNum(1, 12);
+				intLBlueValue = GetRandomNum(1, 12);
+				
+				$("#imgBlue").on("click", function() { 
+            		intRunTotal = intRunTotal + intBlueValue;
+            		$("#RunTotal").text(intRunTotal);
+            		fnCheckScore();
+        		});
+
+				$("#imgRed").on("click", function() { 
+            		intRunTotal = intRunTotal + intRedValue;
+            		$("#RunTotal").text(intRunTotal);
+            		fnCheckScore();
+        		});
+
+        		$("#imgGreen").on("click", function() { 
+            		intRunTotal = intRunTotal + intGreenValue;
+            		$("#RunTotal").text(intRunTotal);
+            		fnCheckScore();
+        		});
+
+        		$("#imgLBlue").on("click", function() { 
+            		intRunTotal = intRunTotal + intLBlueValue;
+            		$("#RunTotal").text(intRunTotal);
+            		fnCheckScore();
+        		});
+
+
+				function fnCheckScore(){
+					if(intRunTotal < intTargetNum){
+						//allow player to keep going
+					}
+					else if(intRunTotal == intTargetNum){
+						//Player Wins
+						intWins = intWins + 1;
+						SetWinLossTotal(intWins, intLosses);
+						alert("You Win");
+						intRunTotal = 0;
+						
+						$("#RunTotal").text(intRunTotal);
+						intTargetNum = GetRandomNum(19, 120);
+						$("#TargetNum").text(intTargetNum);
+						
+						intRedValue = GetRandomNum(1, 12);
+						intBlueValue = GetRandomNum(1, 12);
+						intGreenValue = GetRandomNum(1, 12);
+						intLBlueValue = GetRandomNum(1, 12);
+						
+					}
+					else if(intRunTotal > intTargetNum){
+						//Player Loses - alert them
+						intLosses = intLosses + 1;
+						SetWinLossTotal(intWins, intLosses);
+						alert("You Lose, better luck next time.");
+						intRunTotal = 0;
+						$("#RunTotal").text(intRunTotal);
+						intTargetNum = GetRandomNum(19, 120);
+						$("#TargetNum").text(intTargetNum);
+						intRedValue = GetRandomNum(1, 12);
+						intBlueValue = GetRandomNum(1, 12);
+						intGreenValue = GetRandomNum(1, 12);
+						intLBlueValue = GetRandomNum(1, 12);
+						
+					}
+
+
+				};
+
+		});
+
+	</script>
+
+</body>
+</html>
+
+
+

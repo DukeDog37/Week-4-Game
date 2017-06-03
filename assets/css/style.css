@@ -20,6 +20,13 @@
 	background-color: #ADD8E6
 }
 
+#clsFeedback{
+    text-align: center;
+    border-style: inset;
+    text-shadow: 3px 2px #ADD8E6;
+    background-color: white;
+
+}
 .col-md-4{
     text-align: center;
     border-style: inset;
